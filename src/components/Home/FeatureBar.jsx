@@ -3,7 +3,7 @@ import { FaTruck, FaHeadset, FaShieldAlt, FaBoxOpen } from 'react-icons/fa';
 
 const FeatureBar = () => {
   return (
-    <div className="bg-white p-6 container rounded-xl shadow-sm border border-gray-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="bg-[#FFFFFF] p-6 container rounded-xl drop-shadow-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       
       {/* 1. Free Shipping */}
       <div className="flex items-center gap-4">
