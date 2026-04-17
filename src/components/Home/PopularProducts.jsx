@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from './ProductCard';
+import ProductCard from '../Ui/ProductCard';
 
 const PopularProducts = () => {
   // এখানে আপনার সব প্রোডাক্টের লিস্ট থাকবে
