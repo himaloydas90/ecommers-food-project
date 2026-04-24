@@ -1,9 +1,54 @@
 import React from 'react';
 import { FiShoppingBag, FiHeart, FiEye } from 'react-icons/fi';
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineShopping } from 'react-icons/ai';
 
-const ProductCard = ({ product }) => {
+
+const ProductCard = ({ product,isBig }) => {
+ if (!product) return null;
   const { name, image, price, oldPrice, rating, isSale } = product;
+
+  if (isBig) {
+    return (
+      <div className="p-6 h-full flex flex-col items-center text-center border-2 border-green-500">
+        {/* Sale Tags */}
+        <div className="flex gap-2 self-start mb-4">
+          <span className="bg-red-500 text-white px-2 py-1 text-xs rounded">Sale 50%</span>
+          <span className="bg-blue-600 text-white px-2 py-1 text-xs rounded">Best Sale</span>
+        </div>
+        
+        <img src={product.image} className="w-64 h-64 object-contain mb-4" alt="" />
+        <div className='flex justify-center gap-2 '>
+          <button className="w-11 h-11 flex justify-center items-center bg-white rounded-full border border-gray-100 hover:bg-brand hover:text-white shadow-sm transition-colors">
+          <FiHeart size={18} />
+        </button>
+        <button className="py-3.5 px-32 bg-green-500 text-white  rounded-full flex justify-center items-center gap-2">
+           Add to Cart <AiOutlineShopping className='text-xl' />
+        </button>
+        <button className="w-11 h-11 flex justify-center items-center bg-white rounded-full border border-gray-100 hover:bg-brand hover:text-white shadow-sm transition-colors">
+          <FiEye size={18} />
+        </button>
+
+        </div>
+        
+        <h3 className="text-xl font-semibold text-brand">{product.name}</h3>
+        <div className="text-2xl pt-2 pb-2">
+           <span className="font-bold text-secondary">${product.price}</span>
+           <span className="text-extra line-through ml-2">${product.oldPrice}</span>
+        </div>
+        <div className="flex text-brand text-xl items-center">
+          {[...Array(5)].map((_, i) => (
+              <AiFillStar key={i} className={i < Math.floor(rating) ? "text-brand" : "text-gray-200"} />
+            ))}
+            <p> (524 Feedback)</p>
+        </div>
+        {/* Countdown Timer placeholder */}
+        <h3 className='text-2xl text-extra'>Hurry up! Offer ends In:</h3>
+        <div className="mt-3 flex gap-4 text-lg font-medium text-secondary">
+           <div>01 <br/> <span className='text-extra'>DAYS</span></div> : <div>23 <br/> <span className='text-extra'>HOURS</span></div> : <div>34 <br/> <span className='text-extra'>MINS</span></div> :<div>2025 <br/> <span className='text-extra'>Since</span></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="group relative border border-gray-100 transition-all duration-300 bg-white p-3 cursor-pointer hover:border-brand hover:shadow-lg">
